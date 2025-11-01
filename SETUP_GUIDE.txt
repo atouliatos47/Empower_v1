@@ -1,0 +1,106 @@
+COMPLETE SETUP - MAXIMIZED WINDOW + CENTERED + CUSTOM LOGO
+===========================================================
+
+📥 FILES TO UPDATE:
+-------------------
+1. Replace lib/main.dart
+2. Replace pubspec.yaml
+3. Make sure you have assets/empower.png in your project
+
+🔧 WINDOWS SETUP (IMPORTANT - PREVENTS CRASH):
+----------------------------------------------
+Step 1: Update Windows Configuration
+In your project, open: windows/runner/main.cpp
+
+Find this line (around line 27):
+  Win32Window::Point origin(10, 10);
+  Win32Window::Size size(1280, 720);
+
+REPLACE IT WITH:
+  Win32Window::Point origin(0, 0);
+  Win32Window::Size size(1920, 1080);  // Or your screen resolution
+
+Step 2: Find this line (around line 43):
+  if (!window.Create(L"empower_v1", origin, size)) {
+
+CHANGE TO:
+  if (!window.Create(L"empower_v1", origin, size)) {
+    return EXIT_FAILURE;
+  }
+  
+  // Maximize window on startup
+  ShowWindow(window.GetHandle(), SW_MAXIMIZE);
+
+Step 3: Run these commands:
+  flutter clean
+  flutter pub get
+  flutter run --release
+
+📁 PROJECT STRUCTURE:
+--------------------
+your_project/
+├── lib/
+│   └── main.dart          ← Replace this
+├── assets/
+│   └── empower.png        ← Your logo (make sure it exists!)
+├── pubspec.yaml           ← Replace this
+└── windows/
+    └── runner/
+        └── main.cpp       ← Update this (see above)
+
+✅ WHAT'S FIXED:
+----------------
+✅ App opens MAXIMIZED on Windows
+✅ Everything stays CENTERED when window expands
+✅ Your custom logo (empower.png) is displayed
+✅ Max width of 1200px keeps content perfectly centered
+✅ Professional appearance on any screen size
+
+🎨 FEATURES:
+------------
+- Custom logo on welcome screen
+- Centered layout on all screens
+- Gauge on left, production inputs on right
+- Auto-capitalize part numbers
+- Numeric UPH input
+- Back button to change press name
+
+💡 ALTERNATIVE (If window_manager still causes issues):
+-------------------------------------------------------
+If you still have crashes, use this SIMPLER approach:
+
+In main.dart, replace the main() function with:
+```dart
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
+  
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => PressMonitorModel(),
+      child: const PressMonitorApp(),
+    ),
+  );
+}
+```
+
+And in pubspec.yaml, REMOVE this line:
+  window_manager: ^0.3.7
+
+Then just manually maximize the window when it opens.
+
+🚀 QUICK START:
+--------------
+1. Update the 3 files (main.dart, pubspec.yaml, windows/runner/main.cpp)
+2. flutter clean
+3. flutter pub get
+4. flutter run --release
+
+The app will open maximized with everything centered! 🎉

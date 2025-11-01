@@ -1,0 +1,50 @@
+FIXED - SIMPLE CENTERED LAYOUT UPDATE
+======================================
+
+🛠️ WHAT HAPPENED:
+The previous version crashed because window_manager needed Windows-specific setup.
+This new version is much simpler and works immediately!
+
+📥 INSTALLATION STEPS:
+----------------------
+1. Replace your pubspec.yaml with the new one
+2. Replace your lib/main.dart with the new one
+3. Run: flutter pub get
+4. Run: flutter run
+
+✅ WHAT'S INCLUDED:
+-------------------
+✅ Immersive full-screen mode (hides system bars on mobile/tablets)
+✅ All content centered with max width of 1200px
+✅ Clean layout - gauge on left, production details on right
+✅ Professional appearance
+✅ No crashes!
+
+🖥️ FOR WINDOWS DESKTOP - TO MAKE IT OPEN MAXIMIZED:
+----------------------------------------------------
+The app will open in a normal window. You can:
+
+Option 1: Manually maximize
+- Click the maximize button (□) in the window title bar
+
+Option 2: Press F11 for full screen (in most Windows apps)
+
+Option 3: Run the app in release mode for best performance:
+- flutter run --release
+
+💡 FEATURES:
+------------
+- Welcome screen: Enter press name
+- Monitor screen: Live gauge + Production details inputs
+- Part Number: Auto-capitalizes as you type
+- UPH: Numeric input
+- Back button: Change press name anytime
+- All content beautifully centered
+
+🎨 THE APP LOOKS GREAT:
+-----------------------
+Everything is centered and the layout adapts to your screen size:
+- Wide screens: Side-by-side layout
+- Narrow screens: Stacked layout
+
+No more crashes - just run and enjoy! 🎉
